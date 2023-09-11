@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/backend tfe.iml" filepath="$PROJECT_DIR$/.idea/backend tfe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/detcorp/detcorp.iml" filepath="$PROJECT_DIR$/detcorp/detcorp.iml" />
+    </modules>
+  </component>
+</project>
