@@ -2,6 +2,7 @@ package com.tfe.detcorp.controllers;
 
 import com.tfe.detcorp.entities.Employe;
 import com.tfe.detcorp.repositories.EmployeRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,21 @@ public class EmployeController {
         return employeRepository.save(employe);
     }
 
+    @PostMapping(value="/updateUser/{name}")
+    public @ResponseBody Employe update(@RequestParam String newName, @RequestParam String mdp, @PathVariable String name){
+        Employe employe;
+        employe = employeRepository.findByName(name);
+        employe.setName(newName);
+        employe.setMdp(mdp);
+        return employeRepository.save(employe);
+    }
 
-    @DeleteMapping("/deleteUser/{Id}")
+
+    @DeleteMapping("/deleteUser/{name}")
+    @Transactional
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteEmploye(@PathVariable String Id){
-        employeRepository.deleteById(Integer.parseInt(Id));
+    public void deleteEmploye(@PathVariable String name){
+        employeRepository.deleteByName(name);
     }
 
     @GetMapping(path="/allUsers")
